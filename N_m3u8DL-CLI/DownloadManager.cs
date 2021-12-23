@@ -103,20 +103,24 @@ namespace N_m3u8DL_CLI
             string isVOD = initJson["m3u8Info"]["vod"].ToString();
             try
             {
-                if (initJson["m3u8Info"]["audio"].ToString() != "")
+                if (!String.IsNullOrWhiteSpace(initJson["m3u8Info"]?["audio"]?.ToString()))
+                {
                     externalAudio = true;
-                externalAudioUrl = initJson["m3u8Info"]["audio"].ToString();
-                LOGGER.WriteLine(strings.hasExternalAudioTrack);
-                LOGGER.PrintLine(strings.hasExternalAudioTrack, LOGGER.Warning);
+                    externalAudioUrl = initJson["m3u8Info"]["audio"].ToString();
+                    LOGGER.WriteLine(strings.hasExternalAudioTrack);
+                    LOGGER.PrintLine(strings.hasExternalAudioTrack, LOGGER.Warning);
+                }
             }
-            catch (Exception) {}
+            catch (Exception) { }
             try
             {
-                if (initJson["m3u8Info"]["sub"].ToString() != "")
+                if (!String.IsNullOrWhiteSpace(initJson["m3u8Info"]?["sub"]?.ToString()))
+                {
                     externalSub = true;
-                externalSubUrl = initJson["m3u8Info"]["sub"].ToString();
-                LOGGER.WriteLine(strings.hasExternalSubtitleTrack);
-                LOGGER.PrintLine(strings.hasExternalSubtitleTrack, LOGGER.Warning);
+                    externalSubUrl = initJson["m3u8Info"]["sub"].ToString();
+                    LOGGER.WriteLine(strings.hasExternalSubtitleTrack);
+                    LOGGER.PrintLine(strings.hasExternalSubtitleTrack, LOGGER.Warning);
+                }
             }
             catch (Exception) { }
             total = Convert.ToInt32(segCount);
@@ -271,7 +275,7 @@ namespace N_m3u8DL_CLI
                             sd.TimeOut = TimeOut;
                             sd.SegDur = info["duration"].Value<double>();
                             if (sd.SegDur < 0) sd.SegDur = 0; //防止负数
-                                sd.FileUrl = info["segUri"].Value<string>();
+                            sd.FileUrl = info["segUri"].Value<string>();
                             //VTT字幕
                             if (isVTT == false && (sd.FileUrl.Trim('\"').EndsWith(".vtt") || sd.FileUrl.Trim('\"').EndsWith(".webvtt")))
                                 isVTT = true;
@@ -291,7 +295,7 @@ namespace N_m3u8DL_CLI
                                 File.Delete(sd.SavePath);
                             if (!Global.ShouldStop)
                                 sd.Down();  //开始下载
-                            }
+                        }
                         return sd;
                     },
                     (sd) => { });
@@ -318,7 +322,7 @@ namespace N_m3u8DL_CLI
             //检测是否下完
             IsComplete(Convert.ToInt32(segCount));
         }
-        
+
         public void IsComplete(int segCount)
         {
             int tsCount = 0;
@@ -329,12 +333,12 @@ namespace N_m3u8DL_CLI
                 goto ll;
             }
 
-            for (int i = 0; i < PartsCount; i++) 
+            for (int i = 0; i < PartsCount; i++)
             {
                 tsCount += Global.GetFileCount(DownDir + "\\Part_" + i.ToString(partsPadZero), ".ts");
             }
 
-        ll:
+            ll:
             if (tsCount != segCount)
             {
                 LOGGER.PrintLine(strings.downloadedCount + tsCount + " / " + segCount);
@@ -381,7 +385,7 @@ namespace N_m3u8DL_CLI
                             LOGGER.PrintLine(strings.binaryMergingPleaseWait);
                             MuxFormat = "ts";
                             //有MAP文件，一般为mp4，采取默认动作
-                            if(File.Exists(DownDir + "\\Part_0\\!MAP.ts"))
+                            if (File.Exists(DownDir + "\\Part_0\\!MAP.ts"))
                                 MuxFormat = "mp4";
                             if (isVTT)
                                 MuxFormat = "vtt";
@@ -531,14 +535,14 @@ namespace N_m3u8DL_CLI
                         }
                         catch (Exception) { }
                     }
-                    
+
 
                     if (BinaryMerge)
                     {
                         LOGGER.PrintLine(strings.binaryMergingPleaseWait);
                         MuxFormat = "ts";
                         //有MAP文件，一般为mp4，采取默认动作
-                        if (File.Exists(DownDir + "\\!MAP.ts")) 
+                        if (File.Exists(DownDir + "\\!MAP.ts"))
                             MuxFormat = "mp4";
                         if (isVTT)
                             MuxFormat = "vtt";
