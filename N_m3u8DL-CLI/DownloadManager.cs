@@ -55,22 +55,20 @@ namespace N_m3u8DL_CLI
             timer.Elapsed += delegate
             {
                 var eta = "";
-                if (ToDoSize != 0)
-                {
-                    eta = " @ " + Global.FormatTime(Convert.ToInt32(ToDoSize / (Global.BYTEDOWN / CalcTime)));
-                }
-                var print = Global.FormatFileSize((Global.BYTEDOWN) / CalcTime) + "/s" + eta;
+                Int64 tmpByteDown = 0L;
+                Interlocked.Exchange(ref tmpByteDown, Global.BYTEDOWN);
+                if (ToDoSize != 0 && tmpByteDown != 0L)
+                    eta = " @ " + Global.FormatTime(Convert.ToInt32(ToDoSize / (tmpByteDown / CalcTime)));
+                var print = Global.FormatFileSize((tmpByteDown) / CalcTime) + "/s" + eta;
                 ProgressReporter.Report("", "(" + print + ")");
 
-                if (Global.HadReadInfo && Global.BYTEDOWN <= Global.STOP_SPEED * 1024 * CalcTime)
+                if (Global.HadReadInfo && tmpByteDown <= Global.STOP_SPEED * 1024 * CalcTime)
                 {
                     stopCount++;
                     eta = "";
-                    if (ToDoSize != 0)
-                    {
-                        eta = " @ " + Global.FormatTime(Convert.ToInt32(ToDoSize / (Global.BYTEDOWN / CalcTime)));
-                    }
-                    print = Global.FormatFileSize((Global.BYTEDOWN) / CalcTime) + "/s [" + stopCount + "]" + eta;
+                    if (ToDoSize != 0 && tmpByteDown != 0L)
+                        eta = " @ " + Global.FormatTime(Convert.ToInt32(ToDoSize / (tmpByteDown / CalcTime)));
+                    print = Global.FormatFileSize((tmpByteDown) / CalcTime) + "/s [" + stopCount + "]" + eta;
                     ProgressReporter.Report("", "(" + print + ")");
 
                     if (stopCount >= 12)

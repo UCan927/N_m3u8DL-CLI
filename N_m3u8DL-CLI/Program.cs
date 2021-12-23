@@ -111,7 +111,7 @@ namespace N_m3u8DL_CLI.NetCore
                 Environment.Exit(-1);
             }
 
-        HasFFmpeg:
+            HasFFmpeg:
             if (!File.Exists(Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "NO_UPDATE")))
             {
                 Thread checkUpdate = new Thread(() =>
@@ -264,7 +264,7 @@ namespace N_m3u8DL_CLI.NetCore
                 }
 
                 int inputRetryCount = 20;
-            input:
+                input:
                 string testurl = o.Input;
 
                 //重试太多次，退出
