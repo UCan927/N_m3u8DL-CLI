@@ -136,6 +136,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\ffmpeg.exe">
+      <Link>ffmpeg.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="logo_3Iv_icon.ico" />
   </ItemGroup>
   <ItemGroup>
