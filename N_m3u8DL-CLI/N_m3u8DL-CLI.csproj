@@ -140,6 +140,10 @@
       <Link>ffmpeg.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="..\N_m3u8DL-CLI-SimpleG.exe">
+      <Link>N_m3u8DL-CLI-SimpleG.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="logo_3Iv_icon.ico" />
   </ItemGroup>
   <ItemGroup>
