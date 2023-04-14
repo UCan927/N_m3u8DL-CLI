@@ -261,3 +261,4 @@ __pycache__/
 *.pyc
 /N_m3u8DL-CLI/FodyWeavers.xml
 /N_m3u8DL-CLI/FodyWeavers.xsd
+/packages
