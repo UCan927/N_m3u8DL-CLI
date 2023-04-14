@@ -430,11 +430,20 @@ namespace N_m3u8DL_CLI {
         }
         
         /// <summary>
-        ///   查找类似 设置HTTP/SOCK5代理, 如 http://127.0.0.1:8080 的本地化字符串。
+        ///   查找类似 设置HTTP/SOCKS5代理, 如 http://127.0.0.1:8080 的本地化字符串。
         /// </summary>
         public static string Help_proxyAddress {
             get {
                 return ResourceManager.GetString("Help_proxyAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册m3u8dl链接协议 的本地化字符串。
+        /// </summary>
+        public static string Help_registerUrlProtocol {
+            get {
+                return ResourceManager.GetString("Help_registerUrlProtocol", resourceCulture);
             }
         }
         
@@ -471,6 +480,15 @@ namespace N_m3u8DL_CLI {
         public static string Help_timeOut {
             get {
                 return ResourceManager.GetString("Help_timeOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 取消注册m3u8dl链接协议 的本地化字符串。
+        /// </summary>
+        public static string Help_unregisterUrlProtocol {
+            get {
+                return ResourceManager.GetString("Help_unregisterUrlProtocol", resourceCulture);
             }
         }
         
@@ -637,6 +655,24 @@ namespace N_m3u8DL_CLI {
         }
         
         /// <summary>
+        ///   查找类似 注册m3u8dl链接协议失败！ 的本地化字符串。
+        /// </summary>
+        public static string registerUrlProtocolFailed {
+            get {
+                return ResourceManager.GetString("registerUrlProtocolFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册m3u8dl链接协议成功！ 的本地化字符串。
+        /// </summary>
+        public static string registerUrlProtocolSuccessful {
+            get {
+                return ResourceManager.GetString("registerUrlProtocolSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 将文件转换到 MPEG-TS 封装： 的本地化字符串。
         /// </summary>
         public static string remuxToMPEGTS {
@@ -750,6 +786,24 @@ namespace N_m3u8DL_CLI {
         public static string taskDone {
             get {
                 return ResourceManager.GetString("taskDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 取消注册m3u8dl链接协议失败！ 的本地化字符串。
+        /// </summary>
+        public static string unregisterUrlProtocolFailed {
+            get {
+                return ResourceManager.GetString("unregisterUrlProtocolFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 取消注册m3u8dl链接协议成功！ 的本地化字符串。
+        /// </summary>
+        public static string unregisterUrlProtocolSuccessful {
+            get {
+                return ResourceManager.GetString("unregisterUrlProtocolSuccessful", resourceCulture);
             }
         }
         

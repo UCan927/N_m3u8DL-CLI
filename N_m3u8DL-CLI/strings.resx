@@ -328,7 +328,7 @@
     <value>设置下载速度上限(单位为KB/s)</value>
   </data>
   <data name="Help_proxyAddress" xml:space="preserve">
-    <value>设置HTTP/SOCK5代理, 如 http://127.0.0.1:8080</value>
+    <value>设置HTTP/SOCKS5代理, 如 http://127.0.0.1:8080</value>
   </data>
   <data name="Help_enableDelAfterDone" xml:space="preserve">
     <value>开启下载后删除临时文件夹的功能</value>
@@ -356,5 +356,23 @@
   </data>
   <data name="Help_disableIntegrityCheck" xml:space="preserve">
     <value>不检测分片数量是否完整</value>
+  </data>
+  <data name="Help_registerUrlProtocol" xml:space="preserve">
+    <value>注册m3u8dl链接协议</value>
+  </data>
+  <data name="Help_unregisterUrlProtocol" xml:space="preserve">
+    <value>取消注册m3u8dl链接协议</value>
+  </data>
+  <data name="registerUrlProtocolFailed" xml:space="preserve">
+    <value>注册m3u8dl链接协议失败！</value>
+  </data>
+  <data name="registerUrlProtocolSuccessful" xml:space="preserve">
+    <value>注册m3u8dl链接协议成功！</value>
+  </data>
+  <data name="unregisterUrlProtocolFailed" xml:space="preserve">
+    <value>取消注册m3u8dl链接协议失败！</value>
+  </data>
+  <data name="unregisterUrlProtocolSuccessful" xml:space="preserve">
+    <value>取消注册m3u8dl链接协议成功！</value>
   </data>
 </root>

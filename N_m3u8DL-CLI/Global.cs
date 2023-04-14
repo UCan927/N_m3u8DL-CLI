@@ -35,10 +35,10 @@ namespace N_m3u8DL_CLI
         /*===============================================================================*/
         static Version ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
         static string nowVer = $"{ver.Major}.{ver.Minor}.{ver.Build}";
-        static string nowDate = "20211123";
+        static string nowDate = "20220711";
         public static void WriteInit()
         {
-            Console.WriteLine($"N_m3u8DL-CLI version {nowVer} 2018-2021");
+            Console.WriteLine($"N_m3u8DL-CLI version {nowVer} 2018-2022");
             Console.WriteLine($"  built date: {nowDate}");
             Console.WriteLine();
         }
@@ -94,7 +94,7 @@ namespace N_m3u8DL_CLI
         {
             return Convert.ToInt32(Microsoft.JScript.GlobalObject.parseInt(str, numBase)); 
         }
-
+        
         // 统一设置代理
         // 替换 else if (UseProxyAddress != "") {
         //      WebProxy proxy = new WebProxy(UseProxyAddress);
@@ -688,6 +688,13 @@ namespace N_m3u8DL_CLI
                                 bArr = bArr.Skip(42).ToArray();
                                 size -= 42;
                                 downLen += 42;
+                            }
+                            //BMP HEADER检测
+                            if (!pngHeader && size > 10 && 0x42 == bArr[0] && 0x4D == bArr[1] && 0x00 == bArr[5] && 0x00 == bArr[6] && 0x00 == bArr[7] && 0x00 == bArr[8])
+                            {
+                                bArr = bArr.Skip(0x3E).ToArray();
+                                size -= 0x3E;
+                                downLen += 0x3E;
                             }
                             while (size > 0)
                             {

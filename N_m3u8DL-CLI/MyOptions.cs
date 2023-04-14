@@ -91,5 +91,20 @@ namespace N_m3u8DL_CLI
         [Option("noProxy", HelpText = "Help_noProxy", ResourceType = typeof(strings))]
         public bool NoProxy { get; set; }
 
+        [Option("registerUrlProtocol", HelpText = "Help_registerUrlProtocol", ResourceType = typeof(strings))]
+        public bool RegisterUrlProtocol { get; set; }
+
+        [Option("unregisterUrlProtocol", HelpText = "Help_unregisterUrlProtocol", ResourceType = typeof(strings))]
+        public bool UnregisterUrlProtocol { get; set; }
+
+        [Option("enableChaCha20", HelpText = "enableChaCha20")]
+        public bool EnableChaCha20 { get; set; }
+
+        [Option("chaCha20KeyBase64", HelpText = "ChaCha20KeyBase64")]
+        public string ChaCha20KeyBase64 { get; set; }
+
+        [Option("chaCha20NonceBase64", HelpText = "ChaCha20NonceBase64")]
+        public string ChaCha20NonceBase64 { get; set; }
+
     }
 }
